@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test
 import org.openqa.selenium.By
 import java.awt.Event.DELETE
 import java.sql.DriverManager
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertAll
 
 class Offices {
 
@@ -28,12 +30,13 @@ class Offices {
         @JvmStatic
         internal fun beforeAll() {
             println("'Before All' called")
-           Configuration.browserSize = "1280x1000"
+            Configuration.browserSize = "1280x1000"
             SelenideLogger.addListener("allure", AllureSelenide())
             Selenide.open(urlForTest)
         }
 
     }
+
     @Test
     @Order(1)
     @DisplayName("Log In")
@@ -41,26 +44,31 @@ class Offices {
         println("---- Log In ----")
         logIn()
     }
+
     private fun logIn() {
         mainPage.passwordInput.sendKeys("1111")
         mainPage.usernameInput.sendKeys("1111")
         mainPage.input.click()
     }
+
     @Test
     @Order(2)
     @DisplayName("Add new office ")
-    fun test3addNewOffice() {
+    fun testAddNewOffice() {
         //        // Add element
         DriverManager.println("---- Add new office  ----")
-//        btnAddOffice()
+        //btnAddOffice.click()
+
 //        addOffice ()
         println("Office was add")
 
-}
+    }
+
     @Test
     @Order(3)
     @DisplayName("Check field ")
-    fun testField(){
+    fun testField() {
+        //assertAll()
         println("Field Input1 - checked")
         println("Field Input2 - checked")
         println("Field Input3 - checked")
@@ -80,12 +88,11 @@ class Offices {
     @Test
     @Order(4)
     @DisplayName("Delete Office")
-    fun test6DeleteOffices() {
+    fun testDeleteOffices() {
         DriverManager.println("---- Choice office  and click 'Delete' ----")
-      // AndClick(DELETE)
+        // AndClick(DELETE)
         println("Office deleted ")
     }
-
 
 
     @Test
@@ -106,4 +113,5 @@ class Offices {
         floatMenu.goToOffers.click()
         println("Offers ")
 
-}}
+    }
+}
